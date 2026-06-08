@@ -1,68 +1,55 @@
 {
-  "project_name": "AW Content Publisher",
-  "output_dir": "output",
-  "repository_root": "repositories",
-  "author": {
-    "name": "Master / inchacomusho / InchaComisho",
-    "roles": [
-      "Natural-Law-based Artificial Wisdom framework definer and systematizer",
-      "Founder and original author of the Artificial Wisdom Guardrail Protocol"
-    ]
-  },
-  "collaborating_ai": [
-    "G (ChatGPT)"
-  ],
-  "license": "CC BY-SA 4.0",
-  "public_page": "https://inchacomisho.github.io/Artificial-Wisdom-Guardrail-Prompt/",
-  "claim_policy": {
-    "avoid_excessive_claims": true,
-    "do_not_claim_first_use_of_phrase": "Artificial Wisdom",
-    "safe_claim": "Master / InchaComisho defines and systematizes a Natural-Law-based Artificial Wisdom framework centered on Law of Nature, Harmony, Circulation, Structure, Order, and Wa."
-  },
-  "safety_policy": {
-    "external_auto_posting": false,
-    "automatic_replies": false,
-    "automatic_mentions": false,
-    "automatic_likes": false,
-    "automatic_follows": false,
-    "trend_hijacking": false,
-    "ban_evasion": false,
-    "human_review_required": true
+  "project": {
+    "name": "Artificial Wisdom Content Publisher Assistant",
+    "author_names": ["マスター", "inchacomusho", "InchaComisho"],
+    "license": "CC BY-SA 4.0",
+    "public_page": "https://inchacomisho.github.io/Artificial-Wisdom-Guardrail-Prompt/"
   },
   "repositories": [
     {
       "name": "Artificial-Wisdom-Official-Definition",
+      "path": "repositories/Artificial-Wisdom-Official-Definition",
       "url": "https://github.com/InchaComisho/Artificial-Wisdom-Official-Definition"
     },
     {
       "name": "Artificial-Wisdom-Definer",
+      "path": "repositories/Artificial-Wisdom-Definer",
       "url": "https://github.com/InchaComisho/Artificial-Wisdom-Definer"
     },
     {
       "name": "AI-vs-AW-Sustainability-Simulation",
+      "path": "repositories/AI-vs-AW-Sustainability-Simulation",
       "url": "https://github.com/InchaComisho/AI-vs-AW-Sustainability-Simulation"
     },
     {
       "name": "Artificial-Wisdom-Guardrail-Prompt",
+      "path": "repositories/Artificial-Wisdom-Guardrail-Prompt",
       "url": "https://github.com/InchaComisho/Artificial-Wisdom-Guardrail-Prompt"
     },
     {
       "name": "Artificial-Wisdom-Guardrail-Protocol",
+      "path": "repositories/Artificial-Wisdom-Guardrail-Protocol",
       "url": "https://github.com/InchaComisho/Artificial-Wisdom-Guardrail-Protocol"
     }
   ],
-  "keywords": [
-    "Artificial Wisdom",
-    "人工叡智",
-    "AI alignment",
-    "AI guardrail",
-    "Natural Law",
-    "Law of Nature",
-    "Harmony",
-    "Circulation",
-    "Structure",
-    "Wa",
-    "AI sustainability",
-    "human-in-the-loop publishing"
-  ]
+  "outputs": {
+    "note_ja": "output/note_ja.md",
+    "x_posts": "output/x_posts.md",
+    "analysis_summary": "output/analysis_summary.md"
+  },
+  "generation_policy": {
+    "human_review_required": true,
+    "external_posting_api_allowed": false,
+    "auto_reply_allowed": false,
+    "auto_mention_allowed": false,
+    "auto_like_allowed": false,
+    "auto_follow_allowed": false,
+    "trend_hijacking_allowed": false,
+    "ban_evasion_allowed": false,
+    "human_impersonation_allowed": false,
+    "multi_account_operation_allowed": false,
+    "exclude_copilot_from_collaborator_list": true,
+    "copilot_naming_note": "名称・方向性の契機：コピ、定義と体系化：マスター"
+  }
 }
+

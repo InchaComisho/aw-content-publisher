@@ -4,51 +4,96 @@ import json
 from pathlib import Path
 
 from content_analyzer import analyze_documents
-from generators import (
-    generate_github_readme_en,
-    generate_metadata,
-    generate_note_ja,
-    generate_portal_update,
-    generate_seo_keywords,
-    generate_x_posts,
-)
-from repo_reader import read_markdown_documents
-
-
-ROOT = Path(__file__).resolve().parents[1]
-CONFIG_PATH = ROOT / "config.json"
-
-
-def load_config() -> dict:
-    return json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-
-
-def write_output(output_dir: Path, filename: str, content: str) -> None:
-    output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / filename).write_text(content, encoding="utf-8")
+from note_generator import generate_note_article_ja
+from repo_reader import read_markdown_repositories
+from sns_generator import generate_x_posts
 
 
 def main() -> None:
-    config = load_config()
-    repo_root = ROOT / config.get("repository_root", "repositories")
-    output_dir = ROOT / config.get("output_dir", "output")
-    repo_names = [repo["name"] for repo in config.get("repositories", [])]
+    base_dir = Path(__file__).resolve().parents[1]
+    config = _load_config(base_dir / "config.json")
 
-    documents = read_markdown_documents(repo_root, repo_names)
+    _assert_guardrails(config)
+
+    documents = read_markdown_repositories(base_dir, config["repositories"])
     analysis = analyze_documents(documents)
 
-    write_output(output_dir, "note_ja.md", generate_note_ja(analysis, config))
-    write_output(output_dir, "github_readme_en.md", generate_github_readme_en(analysis, config))
-    write_output(output_dir, "portal_update.md", generate_portal_update(analysis, config))
-    write_output(output_dir, "x_posts.md", generate_x_posts(analysis, config))
-    write_output(output_dir, "seo_keywords.md", generate_seo_keywords(analysis, config))
-    write_output(output_dir, "metadata.md", generate_metadata(analysis, config))
+    outputs = config["outputs"]
+    _write_output(base_dir / outputs["note_ja"], generate_note_article_ja(analysis, config))
+    _write_output(base_dir / outputs["x_posts"], generate_x_posts(analysis, config))
+    _write_output(base_dir / outputs["analysis_summary"], _generate_analysis_summary(analysis, config))
 
-    print("AW Content Publisher completed.")
-    print(f"Documents read: {analysis.document_count}")
-    print(f"Output directory: {output_dir}")
-    print("Review all generated files before publishing anything.")
+    print(f"Loaded Markdown documents: {analysis.document_count}")
+    print(f"Generated: {outputs['note_ja']}")
+    print(f"Generated: {outputs['x_posts']}")
+    print(f"Generated: {outputs['analysis_summary']}")
+
+
+def _load_config(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _assert_guardrails(config: dict) -> None:
+    policy = config["generation_policy"]
+    forbidden_flags = [
+        "external_posting_api_allowed",
+        "auto_reply_allowed",
+        "auto_mention_allowed",
+        "auto_like_allowed",
+        "auto_follow_allowed",
+        "trend_hijacking_allowed",
+        "ban_evasion_allowed",
+        "human_impersonation_allowed",
+        "multi_account_operation_allowed",
+    ]
+    if not policy.get("human_review_required", False):
+        raise ValueError("Guardrail violation: human_review_required must be true.")
+    enabled = [flag for flag in forbidden_flags if policy.get(flag, False)]
+    if enabled:
+        raise ValueError(f"Guardrail violation: forbidden capabilities enabled: {', '.join(enabled)}")
+
+
+def _write_output(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
+def _generate_analysis_summary(analysis, config: dict) -> str:
+    repos = "\n".join(f"- {repo}" for repo in analysis.repositories) or "- No repositories loaded."
+    concepts = "\n".join(
+        f"- {name}: {count}" for name, count in analysis.concept_counts.items() if count > 0
+    ) or "- No configured concepts found yet."
+    headings = []
+    for repo, repo_headings in analysis.headings_by_repo.items():
+        headings.append(f"## {repo}")
+        headings.extend(f"- {heading}" for heading in repo_headings)
+        headings.append("")
+
+    return f"""# Analysis Summary
+
+Human review required: {config["generation_policy"]["human_review_required"]}
+External posting API allowed: {config["generation_policy"]["external_posting_api_allowed"]}
+
+Loaded Markdown documents: {analysis.document_count}
+
+## Repositories
+
+{repos}
+
+## Important Concept Counts
+
+{concepts}
+
+## Extracted Headings
+
+{chr(10).join(headings).strip() or "No headings extracted yet."}
+
+## License
+
+{config["project"]["license"]}
+"""
 
 
 if __name__ == "__main__":
     main()
+
