@@ -2,6 +2,22 @@
 
 InchaComisho / inchacomusho の Artificial Wisdom / 人工叡智 関連リポジトリを読み込み、投稿前の人間確認を前提とした Markdown 投稿案を生成するローカル補助ツールです。
 
+## Version Status
+
+**v0.1** is the first working local implementation.
+
+Implemented scope:
+
+- local Markdown loading from `repositories/`
+- important concept extraction
+- Japanese NOTE draft generation
+- five short X post drafts
+- Markdown output into `output/`
+- guardrail checks requiring human review
+- no external posting API or autonomous spreading behavior
+
+This tool is a publishing support node, not an autonomous distribution bot.
+
 ## Important Guardrails
 
 - 外部SNS、note、GitHub への自動投稿は行いません。
@@ -64,4 +80,3 @@ This tool was used to support the creation of the following Japanese introductor
 ## License Notice
 
 Generated drafts should include attribution under CC BY-SA 4.0 where appropriate.
-
