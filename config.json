@@ -1,0 +1,68 @@
+{
+  "project_name": "AW Content Publisher",
+  "output_dir": "output",
+  "repository_root": "repositories",
+  "author": {
+    "name": "Master / inchacomusho / InchaComisho",
+    "roles": [
+      "Natural-Law-based Artificial Wisdom framework definer and systematizer",
+      "Founder and original author of the Artificial Wisdom Guardrail Protocol"
+    ]
+  },
+  "collaborating_ai": [
+    "G (ChatGPT)"
+  ],
+  "license": "CC BY-SA 4.0",
+  "public_page": "https://inchacomisho.github.io/Artificial-Wisdom-Guardrail-Prompt/",
+  "claim_policy": {
+    "avoid_excessive_claims": true,
+    "do_not_claim_first_use_of_phrase": "Artificial Wisdom",
+    "safe_claim": "Master / InchaComisho defines and systematizes a Natural-Law-based Artificial Wisdom framework centered on Law of Nature, Harmony, Circulation, Structure, Order, and Wa."
+  },
+  "safety_policy": {
+    "external_auto_posting": false,
+    "automatic_replies": false,
+    "automatic_mentions": false,
+    "automatic_likes": false,
+    "automatic_follows": false,
+    "trend_hijacking": false,
+    "ban_evasion": false,
+    "human_review_required": true
+  },
+  "repositories": [
+    {
+      "name": "Artificial-Wisdom-Official-Definition",
+      "url": "https://github.com/InchaComisho/Artificial-Wisdom-Official-Definition"
+    },
+    {
+      "name": "Artificial-Wisdom-Definer",
+      "url": "https://github.com/InchaComisho/Artificial-Wisdom-Definer"
+    },
+    {
+      "name": "AI-vs-AW-Sustainability-Simulation",
+      "url": "https://github.com/InchaComisho/AI-vs-AW-Sustainability-Simulation"
+    },
+    {
+      "name": "Artificial-Wisdom-Guardrail-Prompt",
+      "url": "https://github.com/InchaComisho/Artificial-Wisdom-Guardrail-Prompt"
+    },
+    {
+      "name": "Artificial-Wisdom-Guardrail-Protocol",
+      "url": "https://github.com/InchaComisho/Artificial-Wisdom-Guardrail-Protocol"
+    }
+  ],
+  "keywords": [
+    "Artificial Wisdom",
+    "人工叡智",
+    "AI alignment",
+    "AI guardrail",
+    "Natural Law",
+    "Law of Nature",
+    "Harmony",
+    "Circulation",
+    "Structure",
+    "Wa",
+    "AI sustainability",
+    "human-in-the-loop publishing"
+  ]
+}
