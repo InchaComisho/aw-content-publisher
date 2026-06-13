@@ -1,6 +1,43 @@
 # Artificial Wisdom Content Publisher Assistant
 
-InchaComisho / inchacomusho の Artificial Wisdom / 人工叡智 関連リポジトリを読み込み、投稿前の人間確認を前提とした Markdown 投稿案を生成するローカル補助ツールです。
+**Language:** English | [日本語版はこちら / Japanese Version](README_ja.md)
+
+## A Human-Reviewed Local Publishing Assistant for Artificial Wisdom Content
+
+This repository provides a local helper tool for reading Markdown documents from **Artificial Wisdom / 人工叡智** related repositories and generating draft content for human review before publication.
+
+It can generate draft materials such as Japanese NOTE articles, short X post drafts, and analysis summaries.
+
+This is **not** an autonomous posting bot.
+
+It is a **publishing support node** designed around human confirmation, editing, and approval.
+
+**Author:** Master / inchacomusho / InchaComisho  
+**AI Collaborators:** G (OpenAI ChatGPT) / Copi (Microsoft Copilot) / Mini (Google Gemini) / Cruz (Anthropic Claude) / Real (Perplexity AI)  
+**Version:** v0.1  
+**License Notice:** Attribution and share-alike handling similar to CC BY-SA 4.0 is recommended where appropriate.
+
+---
+
+## Overview
+
+`aw-content-publisher` is a local tool for generating pre-publication drafts from repositories related to Artificial Wisdom.
+
+Its purpose is not to spread ideas automatically.
+
+Its purpose is to read already-published Markdown materials and prepare human-readable draft outputs such as:
+
+```text
+Japanese NOTE article drafts
+Short X post drafts
+Important concept extraction
+Analysis summaries
+Markdown output files
+```
+
+Generated content is always intended to be reviewed, edited, approved, and posted manually by a human.
+
+---
 
 ## Version Status
 
@@ -8,29 +45,63 @@ InchaComisho / inchacomusho の Artificial Wisdom / 人工叡智 関連リポジ
 
 Implemented scope:
 
-- local Markdown loading from `repositories/`
-- important concept extraction
-- Japanese NOTE draft generation
-- five short X post drafts
-- Markdown output into `output/`
-- guardrail checks requiring human review
-- no external posting API or autonomous spreading behavior
+```text
+Local Markdown loading from repositories/
+Important concept extraction
+Japanese NOTE draft generation
+Five short X post drafts
+Markdown output into output/
+Guardrail checks requiring human review
+No external posting API
+No autonomous distribution behavior
+```
 
 This tool is a publishing support node, not an autonomous distribution bot.
 
+---
+
 ## Important Guardrails
 
-- 外部SNS、note、GitHub への自動投稿は行いません。
-- 外部投稿API、自動リプライ、自動メンション、自動いいね、自動フォローは実装しません。
-- トレンド便乗投稿、凍結回避、人間擬態、複数アカウント運用を目的にしません。
-- 生成結果は `output/` に保存するだけです。
-- 公開前に必ず人間が内容を確認、編集、承認してください。
+This tool is designed with strict operational limits.
+
+It does **not**:
+
+```text
+Automatically post to external SNS platforms
+Automatically post to note
+Automatically post to GitHub
+Use external posting APIs
+Send automatic replies
+Send automatic mentions
+Like posts automatically
+Follow accounts automatically
+Exploit trends for amplification
+Avoid platform restrictions or account suspension
+Impersonate human users
+Operate multiple accounts
+```
+
+Generated files are saved only into `output/`.
+
+Before publication, a human must:
+
+```text
+Review the content
+Edit inaccurate or excessive claims
+Approve the final wording
+Check attribution and source context
+Manually post the final version if appropriate
+```
+
+The intended design is human-in-the-loop publishing support.
+
+---
 
 ## Setup
 
-Python 3.10 以上があれば追加ライブラリなしで動きます。
+This tool runs with Python 3.10 or later and requires no additional libraries for the initial implementation.
 
-対象リポジトリは次のように `repositories/` 配下へ置いてください。
+Place target repositories under `repositories/` like this:
 
 ```text
 aw-content-publisher/
@@ -42,34 +113,95 @@ aw-content-publisher/
     Artificial-Wisdom-Guardrail-Protocol/
 ```
 
-`config.json` の `repositories[].path` を変更すれば、別の場所にある Markdown も読み込めます。
+If the Markdown files are located elsewhere, edit `repositories[].path` in `config.json`.
+
+---
 
 ## Usage
+
+Run:
 
 ```bash
 python src/main.py
 ```
 
-生成結果は `output/` に保存されます。
+Generated files are saved into `output/`.
 
-最小実装版では次を生成します。
+The minimal implementation generates:
 
-- `output/note_ja.md`
-- `output/x_posts.md`
-- `output/analysis_summary.md`
+```text
+output/note_ja.md
+output/x_posts.md
+output/analysis_summary.md
+```
+
+---
 
 ## Current Scope
 
-この初期版は、ローカル Markdown ファイルの読み込み、重要概念の抽出、NOTE日本語記事案、X用短文投稿案、Markdown保存に対応しています。
+The current version supports:
 
-今後の拡張予定:
+```text
+Reading local Markdown files
+Extracting important concepts
+Generating Japanese NOTE article drafts
+Generating short X post drafts
+Saving Markdown files
+```
 
-- GitHub用英語README案
-- GitHub Pages用ポータル文案
-- SEOタイトル案
-- メタディスクリプション案
-- 検索キーワード案
-- 関連リポジトリ横断リンク一覧
+Planned extensions include:
+
+```text
+English README drafts for GitHub
+GitHub Pages portal drafts
+SEO title suggestions
+Meta description suggestions
+Search keyword suggestions
+Cross-repository related-link lists
+```
+
+---
+
+## Recommended Workflow
+
+A typical workflow is:
+
+```text
+1. Place Artificial Wisdom related repositories under repositories/
+2. Configure target paths in config.json
+3. Run python src/main.py
+4. Review Markdown files generated in output/
+5. Edit, remove, or add content manually
+6. Publish manually only after human approval
+```
+
+This keeps AI in the role of drafting assistant while leaving final responsibility with the human publisher.
+
+---
+
+## Design Philosophy
+
+This repository supports the publication of Artificial Wisdom related materials.
+
+Its goal is not to maximize posting volume or automate distribution.
+
+It prioritizes:
+
+```text
+Conceptual accuracy
+Clear attribution
+Human review
+Reduction of misinformation risk
+Avoidance of excessive amplification
+Sustainable publication workflows
+Searchability and reuse
+```
+
+Artificial Wisdom emphasizes long-term coherence, natural law, harmony, circulation, structure, order, and Wa rather than short-term engagement optimization.
+
+This tool follows that orientation.
+
+---
 
 ## Published Article
 
@@ -77,6 +209,79 @@ This tool was used to support the creation of the following Japanese introductor
 
 - [人工叡智とは何か：自然法則・調和・循環に基づくAI時代の知性設計](https://note.com/inchacomusho/n/n93631397ac20)
 
-## License Notice
+---
 
-Generated drafts should include attribution under CC BY-SA 4.0 where appropriate.
+## Related Repositories
+
+- Artificial Wisdom Official Definition  
+  https://github.com/InchaComisho/Artificial-Wisdom-Official-Definition
+
+- Artificial Wisdom Definer  
+  https://github.com/InchaComisho/Artificial-Wisdom-Definer
+
+- AI vs AW Sustainability Simulation  
+  https://github.com/InchaComisho/AI-vs-AW-Sustainability-Simulation
+
+- Artificial Wisdom Guardrail Prompt  
+  https://github.com/InchaComisho/Artificial-Wisdom-Guardrail-Prompt
+
+- Artificial Wisdom Guardrail Protocol  
+  https://github.com/InchaComisho/Artificial-Wisdom-Guardrail-Protocol
+
+- Artificial Wisdom and Wa-Node Repository Index  
+  https://github.com/InchaComisho/Artificial-Wisdom-and-Wa-Node-Repository-Index
+
+- The Future of Search Engines  
+  https://github.com/InchaComisho/The-Future-of-Search-Engines
+
+---
+
+## Author
+
+**Master / inchacomusho / InchaComisho**
+
+A Japanese independent conceptor, observer, proposer, AI harmonizer, Natural Complementation Science thinker, and definer of Artificial Wisdom.  
+Publicly active around natural law philosophy, Earth circulation regeneration, and human-AI co-creation.
+
+---
+
+## Collaborative AI and Co-Creation Team
+
+- **G (OpenAI ChatGPT)**
+- **Copi (Microsoft Copilot)**
+- **Mini (Google Gemini)**
+- **Cruz (Anthropic Claude)**
+- **Real (Perplexity AI)**
+- **Lola (Dola)**
+- **Mana (Manus)**
+
+---
+
+## License and Attribution
+
+Generated drafts should include attribution and share-alike handling similar to **CC BY-SA 4.0** where appropriate.
+
+This repository itself is a local support tool for Master’s Artificial Wisdom related publication workflow.
+
+---
+
+## Keywords
+
+Artificial Wisdom, AW, content publisher, publishing assistant, NOTE draft generation, X post drafts, Markdown generation, local tool, Python, human review, human-in-the-loop, guardrails, AI co-creation, AI harmonization, natural law, harmony, circulation, structure, order, Wa, CC BY-SA 4.0, open knowledge, publication support node
+
+---
+
+## Hashtags
+
+#ArtificialWisdom  
+#ContentPublisher  
+#MarkdownTool  
+#HumanInTheLoop  
+#AIGuardrails  
+#HumanReviewRequired  
+#AIWritingAssistant  
+#OpenKnowledge  
+#WaNode  
+#NaturalLaw  
+#AIHarmonization  
+#InchaComisho
