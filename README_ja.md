@@ -2,6 +2,8 @@
 
 **言語 / Language:** 日本語 | [English Version](README.md)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M6J122N2K2)
+
 ## Artificial Wisdom Content Publisher Assistant
 
 このリポジトリは、**Artificial Wisdom / 人工叡智** 関連リポジトリのMarkdown文書を読み込み、人間の確認を前提として、NOTE記事案・X投稿案・分析要約を生成するローカル補助ツールである。

@@ -2,6 +2,8 @@
 
 **Language:** English | [日本語版はこちら / Japanese Version](README_ja.md)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M6J122N2K2)
+
 ## A Human-Reviewed Local Publishing Assistant for Artificial Wisdom Content
 
 This repository provides a local helper tool for reading Markdown documents from **Artificial Wisdom / 人工叡智** related repositories and generating draft content for human review before publication.
