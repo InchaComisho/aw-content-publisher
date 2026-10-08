@@ -205,12 +205,6 @@ This tool follows that orientation.
 
 ---
 
-## Published Article
-
-This tool was used to support the creation of the following Japanese introductory article:
-
-- [人工叡智とは何か：自然法則・調和・循環に基づくAI時代の知性設計](https://note.com/inchacomusho/n/n93631397ac20)
-
 ---
 
 ## Related Repositories
